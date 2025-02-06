@@ -2,7 +2,7 @@
 {% load static %}
 <header class="bg-green-100 shadow-md flex h-16 items-center">
     <div class="flex items-center space-x-2 ml-4">
-        <img src="{% static 'lgo.png' %}" alt="Logo" class="h-12 w-auto">
+        <a href="{% url 'home'%}"><img src="{% static 'lgo.png' %}" alt="Logo" class="h-12 w-auto"></a>
         <h1 class="text-xl font-bold">Clothings</h1>
     </div>
     <div class="container mx-auto flex justify-between items-center">
@@ -19,9 +19,9 @@
                     
                     <!-- Dropdown Menu -->
                     <ul id="dropdownMenu" class="absolute left-0 top-full mt-2 w-40 bg-white border rounded-lg shadow-md opacity-0 invisible transition-opacity z-50">
-                        <li class="px-4 py-2 hover:bg-gray-100"><a href="#">Profile</a></li>
-                        <li class="px-4 py-2 hover:bg-gray-100"><a href="#">Orders</a></li>
-                        <li class="px-4 py-2 hover:bg-gray-100"><a href="#">Coupons</a></li>
+                        <a href="{% url 'profile' %}"><li class="px-4 py-2 hover:bg-gray-100">Profile</li></a>
+                        <a href="{% url 'orders'%}"><li class="px-4 py-2 hover:bg-gray-100">Orders</li></a>
+                        <a href="#"><li class="px-4 py-2 hover:bg-gray-100">Coupons</li></a>
                         <li class="px-4 py-2 hover:bg-gray-100"><a href="#">Logout</a></li>
                     </ul>
                 </li>
@@ -43,4 +43,28 @@
         </nav>
     </div>
 </header>
+<script>
+    // Toggle dropdown visibility
+    function toggleDropdown(event) {
+        event.preventDefault();  // Prevent default anchor behavior (navigation)
+        const dropdown = document.getElementById('dropdownMenu');
+        if (dropdown.classList.contains('opacity-0')) {
+            dropdown.classList.remove('opacity-0', 'invisible');  // Make it visible
+            dropdown.classList.add('opacity-100', 'visible');     // Make it visible
+        } else {
+            dropdown.classList.remove('opacity-100', 'visible');  // Hide it
+            dropdown.classList.add('opacity-0', 'invisible');     // Hide it
+        }
+    }
+    document.addEventListener('click', function(event) {
+        const dropdown = document.getElementById('dropdownMenu');
+        const icon = document.getElementById('dropdownIcon');
+        
+        // Check if the click was outside the dropdown or icon
+        if (!dropdown.contains(event.target) && !icon.contains(event.target)) {
+            dropdown.classList.remove('opacity-100', 'visible');  // Hide dropdown
+            dropdown.classList.add('opacity-0', 'invisible');     // Hide dropdown
+        }
+    });
+</script>
 {% endblock %}

@@ -9,3 +9,9 @@ def home(request):
         static("banner3.jpg"),
     ]
     return render(request, "index.html", {"slides": slides})
+
+def profile(request):
+    return render(request,'profile.html')
+
+def orders(request):
+    return render(request,'orders.html')

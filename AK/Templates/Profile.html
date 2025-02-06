@@ -1,0 +1,106 @@
+<script src="https://cdn.tailwindcss.com"></script>
+{% include 'navbar.html'%}
+    <div class="flex flex-col min-h-screen bg-white shadow-lg rounded-lg p-6 mt-6">
+        <!-- Welcome Message -->
+        <h1 class="text-3xl font-bold text-center text-gray-800 mb-4">Hello, <span class="text-green-600">User</span> 👋</h1>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-6 flex-grow">
+            <!-- Orders Card -->
+            <div class="bg-white p-6 rounded-lg shadow-lg flex items-center space-x-4 w-full">
+                <div class="bg-green-100 p-4 rounded-full">
+                    <svg class="w-10 h-10 text-green-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h18M3 9h18M3 15h18M3 21h18"/>
+                    </svg>
+                </div>
+                <div>
+                    <h2 class="text-xl font-semibold">Orders</h2>
+                    <p class="text-gray-600">View your past and current orders.</p>
+                    <a href="#" class="mt-2 inline-block text-green-500 font-medium hover:underline">Manage Orders →</a>
+                </div>
+            </div>
+
+            <!-- Address Card -->
+            <div class="bg-white p-6 rounded-lg shadow-lg flex items-center space-x-4 w-full">
+                <div class="bg-blue-100 p-4 rounded-full">
+                    <svg class="w-10 h-10 text-blue-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 2c2.21 0 4 1.79 4 4v12c0 2.21-1.79 4-4 4H8c-2.21 0-4-1.79-4-4V6c0-2.21 1.79-4 4-4h4z"/>
+                    </svg>
+                </div>
+                <div>
+                    <h2 class="text-xl font-semibold">Address</h2>
+                    <p class="text-gray-600">Update or manage your delivery address.</p>
+                    <a href="#" class="mt-2 inline-block text-blue-500 font-medium hover:underline">Manage Address →</a>
+                </div>
+            </div>
+
+             <!-- Gift Cards Card -->
+             <div class="bg-white p-6 rounded-lg shadow-lg flex items-center space-x-4 w-full">
+                <div class="bg-pink-100 p-4 rounded-full">
+                    <svg class="w-10 h-10 text-pink-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 8c2.21 0 4-1.79 4-4V3H4v1c0 2.21 1.79 4 4 4h8zm-8 4v4H4v3h16v-3h-4v-4H8z"/>
+                    </svg>
+                </div>
+                <div>
+                    <h2 class="text-xl font-semibold">Gift Cards</h2>
+                    <p class="text-gray-600">Buy or redeem gift cards for future purchases.</p>
+                    <a href="#" class="mt-2 inline-block text-pink-500 font-medium hover:underline">Shop Gift Cards →</a>
+                </div>
+            </div>
+
+            <!-- Login Security Card -->
+            <div class="bg-white p-6 rounded-lg shadow-lg flex items-center space-x-4 w-full">
+                <div class="bg-gray-100 p-4 rounded-full">
+                    <svg class="w-10 h-10 text-gray-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 11c2.21 0 4-1.79 4-4V7a4 4 0 00-8 0v0c0 2.21 1.79 4 4 4zm0 4v6m0 0h4m-4 0H8"/>
+                    </svg>
+                </div>
+                <div>
+                    <h2 class="text-xl font-semibold">Login Security</h2>
+                    <p class="text-gray-600">Manage passwords and security settings.</p>
+                    <a href="#" class="mt-2 inline-block text-gray-700 font-medium hover:underline">Update Security →</a>
+                </div>
+            </div>
+
+            <!-- Contact Us Card -->
+            <div class="bg-white p-6 rounded-lg shadow-lg flex items-center space-x-4 w-full">
+                <div class="bg-yellow-100 p-4 rounded-full">
+                    <svg class="w-10 h-10 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 22c4.418 0 8-3.582 8-8V10a8 8 0 00-16 0v4c0 4.418 3.582 8 8 8zm0 0h8m-8 0H4"/>
+                    </svg>
+                </div>
+                <div>
+                    <h2 class="text-xl font-semibold">Contact Us</h2>
+                    <p class="text-gray-600">Reach out to us for support or inquiries.</p>
+                    <a href="#" class="mt-2 inline-block text-yellow-500 font-medium hover:underline">Get in Touch →</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        {% include 'footer.html' %}
+        <script>
+            // Toggle dropdown visibility
+            function toggleDropdown(event) {
+                event.preventDefault();  // Prevent default anchor behavior (navigation)
+                const dropdown = document.getElementById('dropdownMenu');
+                if (dropdown.classList.contains('opacity-0')) {
+                    dropdown.classList.remove('opacity-0', 'invisible');  // Make it visible
+                    dropdown.classList.add('opacity-100', 'visible');     // Make it visible
+                } else {
+                    dropdown.classList.remove('opacity-100', 'visible');  // Hide it
+                    dropdown.classList.add('opacity-0', 'invisible');     // Hide it
+                }
+            }
+            document.addEventListener('click', function(event) {
+                const dropdown = document.getElementById('dropdownMenu');
+                const icon = document.getElementById('dropdownIcon');
+                
+                // Check if the click was outside the dropdown or icon
+                if (!dropdown.contains(event.target) && !icon.contains(event.target)) {
+                    dropdown.classList.remove('opacity-100', 'visible');  // Hide dropdown
+                    dropdown.classList.add('opacity-0', 'invisible');     // Hide dropdown
+                }
+            });
+        </script>
+    </div>
+
