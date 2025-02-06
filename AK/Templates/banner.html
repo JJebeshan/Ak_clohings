@@ -1,0 +1,19 @@
+{% load static %}
+<div x-data="{ currentSlide: 0, slides: {{ slides }} }" 
+    class="relative w-full h-64 overflow-hidden rounded-lg shadow-lg mb-6">
+
+    <template x-for="(slide, index) in slides" :key="index">
+        <img :src="slide" class="absolute inset-0 w-full h-full object-cover transition-opacity duration-500" 
+             :class="{ 'opacity-100': currentSlide === index, 'opacity-0': currentSlide !== index }">
+    </template>
+
+            <!-- Navigation Buttons -->
+            <button @click="currentSlide = (currentSlide > 0) ? currentSlide - 1 : slides.length - 1" 
+                    class="absolute left-2 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-50 text-white p-2 rounded-full">
+                &#10094;
+            </button>
+            <button @click="currentSlide = (currentSlide < slides.length - 1) ? currentSlide + 1 : 0" 
+                    class="absolute right-2 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-50 text-white p-2 rounded-full">
+                &#10095;
+            </button>
+        </div>
