@@ -14,7 +14,7 @@
     <main class="container mx-auto p-6">
         <!-- Image Slider -->
         {% include 'banner.html' %}
-    
+        {% include 'category.html'%}
         <!-- Products Section -->
         {% include 'products.html' %}
         
@@ -22,30 +22,7 @@
   
     {% include 'footer.html'%}
     
-    <script>
-        // Toggle dropdown visibility
-        function toggleDropdown(event) {
-            event.preventDefault();  // Prevent default anchor behavior (navigation)
-            const dropdown = document.getElementById('dropdownMenu');
-            if (dropdown.classList.contains('opacity-0')) {
-                dropdown.classList.remove('opacity-0', 'invisible');  // Make it visible
-                dropdown.classList.add('opacity-100', 'visible');     // Make it visible
-            } else {
-                dropdown.classList.remove('opacity-100', 'visible');  // Hide it
-                dropdown.classList.add('opacity-0', 'invisible');     // Hide it
-            }
-        }
-        document.addEventListener('click', function(event) {
-            const dropdown = document.getElementById('dropdownMenu');
-            const icon = document.getElementById('dropdownIcon');
-            
-            // Check if the click was outside the dropdown or icon
-            if (!dropdown.contains(event.target) && !icon.contains(event.target)) {
-                dropdown.classList.remove('opacity-100', 'visible');  // Hide dropdown
-                dropdown.classList.add('opacity-0', 'invisible');     // Hide dropdown
-            }
-        });
-    </script>
+    
 {% endblock %}
 </body>
 </html>

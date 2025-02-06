@@ -1,0 +1,31 @@
+    <script src="https://cdn.tailwindcss.com"></script>
+{% include 'navbar.html'%}
+<div class="bg-gray-100 flex items-center justify-center min-h-screen">
+
+    <div class="w-full max-w-3xl p-6 bg-white shadow-lg rounded-lg">
+        <h2 class="text-2xl font-bold text-gray-800 text-center mb-4">Your Addresses</h2>
+
+        <!-- Address Card -->
+        <div class="bg-white p-4 rounded-lg shadow-md border border-gray-200">
+            <h3 class="text-lg font-semibold text-gray-800">Address 1</h3>
+            <p class="text-gray-600 mt-1">John Doe</p>
+            <p class="text-gray-600">123 Main Street, Apt 4B</p>
+            <p class="text-gray-600">Los Angeles, CA - 90001</p>
+            <p class="text-gray-600">United States</p>
+            <p class="text-gray-600">Phone: +1 123-456-7890</p>
+
+            <a href="#" class="inline-block mt-3 bg-green-500 text-white px-4 py-2 rounded-lg hover:bg-green-600 transition">
+                Edit Address
+            </a>
+        </div>
+
+        <!-- Add New Address Button -->
+        <div class="text-center mt-6">
+            <a href="#" class="bg-blue-500 text-white px-6 py-2 rounded-lg hover:bg-blue-600 transition">
+                ➕ Add New Address
+            </a>
+        </div>
+    </div>
+
+</div>
+

@@ -1,0 +1,79 @@
+
+    <script src="https://cdn.tailwindcss.com"></script>
+{%include 'navbar.html'%}
+<div class="bg-gray-100 flex items-start justify-center min-h-screen">
+
+    <div class="bg-white shadow-lg rounded-lg p-6 w-full max-w-lg">
+        <h2 class="text-2xl font-bold text-center text-gray-800 mb-4">Create an Account</h2>
+        
+        <form id="registerForm" onsubmit="showSuccess(event)">
+            <div class="grid grid-cols-2 gap-4">
+                <div>
+                    <label class="block text-sm font-medium text-gray-700">First Name</label>
+                    <input type="text" class="w-full mt-1 p-2 border rounded-lg focus:ring-2 focus:ring-green-500" required>
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-gray-700">Last Name</label>
+                    <input type="text" class="w-full mt-1 p-2 border rounded-lg focus:ring-2 focus:ring-green-500" required>
+                </div>
+            </div>
+
+            <div class="mt-4">
+                <label class="block text-sm font-medium text-gray-700">Email</label>
+                <input type="email" class="w-full mt-1 p-2 border rounded-lg focus:ring-2 focus:ring-green-500" required>
+            </div>
+
+            <div class="mt-4 grid grid-cols-3 gap-2">
+                <div>
+                    <label class="block text-sm font-medium text-gray-700">Country Code</label>
+                    <select class="w-full mt-1 p-2 border rounded-lg focus:ring-2 focus:ring-green-500" required>
+                        <option>+1 (US)</option>
+                        <option>+44 (UK)</option>
+                        <option>+91 (India)</option>
+                        <option>+61 (Australia)</option>
+                    </select>
+                </div>
+                <div class="col-span-2">
+                    <label class="block text-sm font-medium text-gray-700">Mobile</label>
+                    <input type="tel" class="w-full mt-1 p-2 border rounded-lg focus:ring-2 focus:ring-green-500" required>
+                </div>
+            </div>
+
+            <div class="mt-4 flex items-center">
+                <input type="checkbox" id="terms" class="h-4 w-4 text-green-600" required>
+                <label for="terms" class="ml-2 text-sm text-gray-700">I agree to the <a href="#" class="text-green-500 underline">terms and conditions</a></label>
+            </div>
+
+            <button type="submit" class="mt-6 w-full bg-green-600 text-white py-2 rounded-lg font-medium hover:bg-green-700 transition">
+                Create Account
+            </button>
+
+            <p class="mt-4 text-center text-gray-600">
+                Already have an account? <a href="#" class="text-green-500 font-medium hover:underline">Log in</a>
+            </p>
+        </form>
+    </div>
+
+    <!-- Success Message Box -->
+    <div id="successBox" class="hidden fixed top-6 right-6 bg-green-500 text-white p-4 rounded-lg shadow-lg transition transform translate-y-[-20px] opacity-0">
+        🎉 Account created successfully!
+    </div>
+
+    <script>
+        function showSuccess(event) {
+            event.preventDefault(); // Prevent form submission
+            let box = document.getElementById('successBox');
+            box.classList.remove('hidden');
+            setTimeout(() => {
+                box.classList.add('opacity-100', 'translate-y-0');
+            }, 100);
+
+            setTimeout(() => {
+                box.classList.remove('opacity-100');
+                box.classList.add('translate-y-[-20px]', 'opacity-0');
+                setTimeout(() => box.classList.add('hidden'), 500);
+            }, 3000);
+        }
+    </script>
+
+</div>
