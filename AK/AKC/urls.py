@@ -12,5 +12,9 @@ urlpatterns=[
    path('login',views.login,name='login'),
    path('otp',views.otp,name='otp'),
    path('password',views.pass_word,name='password'),
-   path('changepass',views.password_change,name='changepas')
+   path('changepass',views.password_change,name='changepas'),
+   path('upd_sec',views.upd_sec,name='updatesecurity'),
+   path('Accounts',views.accounts,name='accounts'),
+   path('wishlist',views.wishlist,name='wishlist'),
+   path('cart',views.cart,name='cart'),
 ]

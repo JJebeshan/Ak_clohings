@@ -34,3 +34,11 @@ def pass_word(request):
     return render(request,'password.html')
 def password_change(request):
     return render(request,'change_pass.html')
+def upd_sec(request):
+    return render(request,'upd_security.html')
+def accounts(request):
+    return render(request,'Accounts.html')
+def wishlist(request):
+    return render(request,'wishlist.html')
+def cart(request):
+    return render(request,'cart.html')

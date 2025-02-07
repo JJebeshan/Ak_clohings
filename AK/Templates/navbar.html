@@ -29,12 +29,12 @@
                 
                 <li class="flex items-center space-x-1">
                     <img src="{% static 'heart.png'%}" alt="Wishlist" class="h-6 w-6">
-                    <a href="#" class="hover:text-green-600">Wishlist</a>
+                    <a href="{% url 'wishlist'%}" class="hover:text-green-600">Wishlist</a>
                 </li>
                 <li><a href="#" class="hover:text-green-600">Contact</a></li>
             </ul>
             <div class="relative">
-                <img src="{% static 'shopping-bag.png'%}" alt="Cart" class="h-8 w-8">
+               <a href="{% url 'cart'%}"> <img src="{% static 'shopping-bag.png'%}" alt="Cart" class="h-8 w-8"></a>
                 <span class="absolute top-0 right-0 left-5 bg-red-500 text-white text-xs rounded-full px-4 py-1 flex items-center justify-center">
                     16
                   </span>
