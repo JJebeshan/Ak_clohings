@@ -1,15 +1,23 @@
-{% load static %}
-<div class="container mx-auto p-6">
-    <h2 class="text-2xl font-semibold text-center mb-6">Our Products</h2>
-    
+<script src="https://cdn.tailwindcss.com"></script>
+{% include 'navbar.html'%}
+<div class="container mx-auto p-6 flex">
     <!-- Filter Section -->
-    <div class="mb-6 p-4 bg-green-100 rounded-lg shadow-md">
-        <label for="priceFilter" class="block text-lg font-semibold mb-2">Filter by Price:</label>
+    <aside class="w-1/4 p-4 bg-green-100 rounded-lg shadow-md mr-6">
+        <h2 class="text-lg font-semibold mb-2">Filter by Price:</h2>
         <input type="range" id="priceFilter" min="10" max="50" value="30" class="w-full" oninput="updatePriceValue(this.value)">
         <p class="text-center mt-2">Price: $<span id="priceValue">30</span></p>
-    </div>
+        
+        <h2 class="text-lg font-semibold mt-4">Filter by Category:</h2>
+        <div class="mt-2">
+            <label class="block"><input type="checkbox" class="mr-2"> Electronics</label>
+            <label class="block"><input type="checkbox" class="mr-2"> Clothing</label>
+            <label class="block"><input type="checkbox" class="mr-2"> Home & Kitchen</label>
+            <label class="block"><input type="checkbox" class="mr-2"> Books</label>
+        </div>
+    </aside>
     
-    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+    <!-- Product Section -->
+    <div class="w-3/4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
         <div class="bg-green-50 p-4 rounded-lg shadow-md">
             <img src="https://via.placeholder.com/200" alt="Product 1" class="w-full h-48 object-cover rounded">
             <h3 class="text-lg font-semibold mt-2">Product Name</h3>
@@ -30,6 +38,3 @@
         </div>
     </div>
 </div>
-
-<!-- Include FontAwesome for Icons -->
-<script src="https://kit.fontawesome.com/cbe3e9690b.js" crossorigin="anonymous"></script>

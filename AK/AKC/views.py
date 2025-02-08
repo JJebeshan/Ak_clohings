@@ -42,3 +42,5 @@ def wishlist(request):
     return render(request,'wishlist.html')
 def cart(request):
     return render(request,'cart.html')
+def productsmain(request):
+    return render(request,'product_main.html')

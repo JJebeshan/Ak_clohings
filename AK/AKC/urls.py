@@ -17,4 +17,5 @@ urlpatterns=[
    path('Accounts',views.accounts,name='accounts'),
    path('wishlist',views.wishlist,name='wishlist'),
    path('cart',views.cart,name='cart'),
+   path('productsmain',views.productsmain,name='productsmain'),
 ]
