@@ -1,0 +1,58 @@
+<script src="https://cdn.tailwindcss.com"></script>
+{% include 'navbar.html'%}
+<div class="container mx-auto flex mt-6">
+    <!-- Filter Section -->
+    <aside id="filterSection" class="w-0.8/4 p-4 bg-green-100 rounded-lg shadow-md hidden md:block">
+        <h2 class="text-lg font-semibold mb-2">Fit Type</h2>
+        <div>
+            <label class="block"><input type="checkbox" class="mr-2"> Regular Fit</label>
+            <label class="block"><input type="checkbox" class="mr-2"> Slim Fit</label>
+            <label class="block"><input type="checkbox" class="mr-2"> Oversized Fit</label>
+            <label class="block"><input type="checkbox" class="mr-2"> Athletic Fit</label>
+        </div>
+        <h2 class="text-lg font-semibold mt-4">Brands</h2>
+        <div>
+            <label class="block"><input type="checkbox" class="mr-2"> Peter England</label>
+            <label class="block"><input type="checkbox" class="mr-2"> Allen Solly</label>
+            <label class="block"><input type="checkbox" class="mr-2"> Amazon Brand</label>
+        </div>
+        <h2 class="text-lg font-semibold mt-4">Price</h2>
+        <input type="range" id="priceFilter" min="10" max="30" value="30" class="w-full" oninput="updatePriceValue(this.value)">
+        <p class="text-center mt-2">Price: $<span id="priceValue">30</span></p>
+    </aside>
+    
+    <!-- Product Section -->
+    <div class="w-3/4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+        <div class="bg-white p-4 rounded-lg shadow-md">
+            <img src="https://via.placeholder.com/200" alt="Product 1" class="w-full h-48 object-cover rounded">
+            <h3 class="text-lg font-semibold mt-2">Amazon Brand - Symbol</h3>
+            <p class="text-red-500 font-bold">Limited time deal</p>
+            <p class="text-gray-600">$549 <span class="line-through">$1,499</span></p>
+            <button class="mt-2 bg-yellow-500 text-white px-4 py-2 rounded hover:bg-yellow-600">Add to Cart</button>
+        </div>
+        <div class="bg-white p-4 rounded-lg shadow-md">
+            <img src="https://via.placeholder.com/200" alt="Product 2" class="w-full h-48 object-cover rounded">
+            <h3 class="text-lg font-semibold mt-2">DAMENSCH</h3>
+            <p class="text-green-500 font-bold">Save 5% with coupon</p>
+            <p class="text-gray-600">$1,493 <span class="line-through">$1,799</span></p>
+            <button class="mt-2 bg-yellow-500 text-white px-4 py-2 rounded hover:bg-yellow-600">Add to Cart</button>
+        </div>
+        <div class="bg-white p-4 rounded-lg shadow-md">
+            <img src="https://via.placeholder.com/200" alt="Product 3" class="w-full h-48 object-cover rounded">
+            <h3 class="text-lg font-semibold mt-2">U.S. POLO ASSN.</h3>
+            <p class="text-gray-600">$1,374 <span class="line-through">$2,499</span></p>
+            <button class="mt-2 bg-yellow-500 text-white px-4 py-2 rounded hover:bg-yellow-600">Add to Cart</button>
+        </div>
+    </div>
+</div>
+
+<script>
+    function updatePriceValue(value) {
+        document.getElementById('priceValue').innerText = value;
+    }
+
+    function toggleFilter() {
+        const filterSection = document.getElementById('filterSection');
+        filterSection.classList.toggle('hidden');
+    }
+</script>

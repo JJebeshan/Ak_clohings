@@ -17,13 +17,13 @@ def orders(request):
     return render(request,'orders.html')
 
 def coupons(request):
-    return render(request,'coupons.html')
+    return render(request,'offers/coupons.html')
 
 def signup(request):
     return render(request,'signup.html')
 
 def address_list(request):
-    return render(request,'address_list.html')
+    return render(request,'User/address_list.html')
 def login(request):
     return render(request,'login.html')
 
@@ -32,15 +32,21 @@ def otp(request):
 
 def pass_word(request):
     return render(request,'password.html')
+
 def password_change(request):
     return render(request,'change_pass.html')
+
 def upd_sec(request):
     return render(request,'upd_security.html')
+
 def accounts(request):
-    return render(request,'Accounts.html')
+    return render(request,'User/Accounts.html')
+
 def wishlist(request):
     return render(request,'wishlist.html')
+
 def cart(request):
     return render(request,'cart.html')
+
 def productsmain(request):
-    return render(request,'product_main.html')
+    return render(request,'products/product_main.html')

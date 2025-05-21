@@ -1,0 +1,64 @@
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    {% include 'navbar.html'%}
+    <div class="container mx-auto flex mt-6">
+        <!-- Product Image Section -->
+        <div class="w-1/2 p-4">
+            <img src="https://via.placeholder.com/400" alt="Product Image" class="w-full h-auto rounded-lg shadow-md">
+            <div class="flex space-x-2 mt-2">
+                <img src="https://via.placeholder.com/100" class="w-16 h-16 rounded-lg cursor-pointer">
+                <img src="https://via.placeholder.com/100" class="w-16 h-16 rounded-lg cursor-pointer">
+                <img src="https://via.placeholder.com/100" class="w-16 h-16 rounded-lg cursor-pointer">
+            </div>
+        </div>
+        
+        <!-- Product Details Section -->
+        <div class="w-1/2 p-4">
+            <h2 class="text-2xl font-semibold">Amazon Brand - Symbol Men's Cotton Shirt</h2>
+            <p class="text-gray-600 text-sm">3.8 ★★★★★ (10,382 ratings)</p>
+            <p class="text-red-500 font-bold mt-2">Limited time deal</p>
+            <p class="text-2xl font-bold text-gray-800">₹549 <span class="line-through text-gray-500 text-lg">₹1,499</span></p>
+            <p class="text-green-600 font-semibold">FREE delivery Sunday, 16 February</p>
+            <p class="text-gray-600 mt-2">Inclusive of all taxes</p>
+            
+            <div class="mt-4">
+                <label class="block font-semibold">Size:</label>
+                <select class="border p-2 w-full rounded-md">
+                    <option>38</option>
+                    <option>40</option>
+                    <option>42</option>
+                    <option>44</option>
+                </select>
+            </div>
+            
+            <div class="mt-4">
+                <label class="block font-semibold">Colour:</label>
+                <div class="flex space-x-2">
+                    <div class="w-8 h-8 bg-red-500 rounded-full cursor-pointer"></div>
+                    <div class="w-8 h-8 bg-blue-500 rounded-full cursor-pointer"></div>
+                    <div class="w-8 h-8 bg-green-500 rounded-full cursor-pointer"></div>
+                </div>
+            </div>
+            
+            <div class="mt-4">
+                <label class="block font-semibold">Quantity:</label>
+                <select class="border p-2 w-full rounded-md">
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                </select>
+            </div>
+            
+            <div class="mt-6 flex space-x-4">
+                <button class="bg-yellow-500 text-white px-6 py-2 rounded hover:bg-yellow-600">Add to Cart</button>
+                <button class="bg-orange-500 text-white px-6 py-2 rounded hover:bg-orange-600">Buy Now</button>
+            </div>
+        </div>
+    </div>
+    
+    <footer class="bg-green-100 p-4 text-center mt-6">
+        <p>&copy; 2025 EcoShop. All rights reserved.</p>
+    </footer>
+</body>
+</html>
