@@ -30,7 +30,7 @@ class Products(models.Model):
     ProductName=models.CharField(max_length=50)
     ProductDesc=models.CharField(max_length=255)
     Price=models.DecimalField(max_digits=10,decimal_places=2)
-    stock=models.IntegerField
+    stock=models.IntegerField()
     Imageurl=models.ImageField(upload_to='static/')
     CategoryID=models.ForeignKey(Category,on_delete=models.SET_NULL=True,blank=True)
     Added=models.DateTimeField(default=datetime.now)
