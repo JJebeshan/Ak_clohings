@@ -1,5 +1,6 @@
 from django.db import models
 from datetime import datetime
+
 # Create your models here.
 class Users(models.Model):
     id=models.IntegerField(primary_key=True)
@@ -12,19 +13,14 @@ class Users(models.Model):
     action=models.CharField(max_length=4, null=True)
     Created=models.DateTimeField (null=True)
     
-    class meta:
-        managed=False
-        db_table='Users'
+ 
 
 class Category(models.Model):
     CategoryID=models.IntegerField(primary_key=True)
     CategoryName=models.CharField(max_length=50)
     CategoryDescription=models.CharField(max_length=255)
 
-    class meta:
-        managed=False
-        db_table='Category'
-
+  
 class Products(models.Model):
     ProductID=models.CharField(max_length=10,primary_key=True)
     ProductName=models.CharField(max_length=50)
@@ -35,9 +31,6 @@ class Products(models.Model):
     CategoryID=models.ForeignKey(Category,on_delete=models.SET_NULL,null=True,blank=True)
     Added=models.DateTimeField(default=datetime.now)
 
-    class meta:
-        managed=False
-        db_table='Products'
 class Cart(models.Model):
     CartID=models.CharField(max_length=10,primary_key=True)
     UserID=models.ForeignKey(Users,on_delete=models.SET_NULL,null=True,blank=True)
@@ -45,9 +38,7 @@ class Cart(models.Model):
     Quantity=models.IntegerField
     Added=models.DateTimeField(default=datetime.now)
 
-    class meta:
-        managed=False
-        db_table='Cart'
+  
 class Invoice(models.Model):
     DocheaderNo=models.CharField(max_length=20,primary_key=True)
     UserID=models.ForeignKey(Users,on_delete=models.SET_NULL,null=True,blank=True)
@@ -58,9 +49,7 @@ class Invoice(models.Model):
     Paymentstatus=models.CharField(max_length=20,default='Unpaid')
     BillingAddress=models.CharField(max_length=255)
 
-    class meta:
-        managed=False
-        db_table='invoice'
+
 
 class InvoiceDetails(models.Model):
     DocheaderNo=models.CharField(max_length=20,primary_key=True)
@@ -72,9 +61,6 @@ class InvoiceDetails(models.Model):
     Price=models.DecimalField(max_digits=10,decimal_places=2)
     GST=models.CharField(max_length=30)
 
-    class meta:
-        managed=False
-        db_table='invoice_Detail'
 
 class Payments(models.Model):
     DocNo=models.IntegerField(primary_key=True)
@@ -84,9 +70,6 @@ class Payments(models.Model):
     PayementDate=models.DateTimeField(default=datetime.now)
     PaymentStatus=models.CharField(max_length=6)
 
-    class meta:
-        managed=False
-        db_table='payments'
 
 class Coupouns(models.Model):
     ID=models.IntegerField(primary_key=True)
@@ -97,9 +80,7 @@ class Coupouns(models.Model):
     validTill=models.DateField
     ISActive=models.BooleanField(default=1)
 
-    class meta:
-        managed=False
-        db_table='Coupouns'
+  
 
 class Customer(models.Model):
     ID=models.CharField(max_length=10,primary_key=True)
@@ -111,8 +92,5 @@ class Customer(models.Model):
     created=models.DateTimeField(default=datetime.now)
     GSt=models.CharField(max_length=50)
 
-    class meta:
-        managed=False
-        db_table='Customer'
 
 

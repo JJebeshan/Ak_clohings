@@ -76,15 +76,12 @@ WSGI_APPLICATION = 'AK.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'mssql',
-        'NAME': 'YourDBName',
-        'USER': 'YourUsername',
-        'PASSWORD': 'YourPassword',
-        'HOST': 'YourSQLServerHost',  # for local: 'localhost' or '127.0.0.1'
-        'PORT': '1433',  # default SQL Server port
-        'OPTIONS': {
-            'driver': 'ODBC Driver 17 for SQL Server',
-        },
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'ak',
+        'USER': 'root',
+        'PASSWORD': 'Jebeshan@07',
+        'HOST': 'localhost',  # Or IP address
+        'PORT': '3306',       # Default MySQL port
     }
 }
 
