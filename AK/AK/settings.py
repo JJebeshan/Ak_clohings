@@ -76,11 +76,17 @@ WSGI_APPLICATION = 'AK.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'mssql',
+        'NAME': 'YourDBName',
+        'USER': 'YourUsername',
+        'PASSWORD': 'YourPassword',
+        'HOST': 'YourSQLServerHost',  # for local: 'localhost' or '127.0.0.1'
+        'PORT': '1433',  # default SQL Server port
+        'OPTIONS': {
+            'driver': 'ODBC Driver 17 for SQL Server',
+        },
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
