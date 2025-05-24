@@ -30,11 +30,89 @@ class Products(models.Model):
     ProductName=models.CharField(max_length=50)
     ProductDesc=models.CharField(max_length=255)
     Price=models.DecimalField(max_digits=10,decimal_places=2)
-    stock=models.IntegerField()
+    stock=models.IntegerField
     Imageurl=models.ImageField(upload_to='static/')
-    CategoryID=models.ForeignKey(Category,on_delete=models.SET_NULL=True,blank=True)
+    CategoryID=models.ForeignKey(Category,on_delete=models.SET_NULL,null=True,blank=True)
     Added=models.DateTimeField(default=datetime.now)
 
     class meta:
         managed=False
         db_table='Products'
+class Cart(models.Model):
+    CartID=models.CharField(max_length=10,primary_key=True)
+    UserID=models.ForeignKey(Users,on_delete=models.SET_NULL,null=True,blank=True)
+    ProductID=models.ForeignKey(Products,on_delete=models.SET_NULL,null=True,blank=True)
+    Quantity=models.IntegerField
+    Added=models.DateTimeField(default=datetime.now)
+
+    class meta:
+        managed=False
+        db_table='Cart'
+class Invoice(models.Model):
+    DocheaderNo=models.CharField(max_length=20,primary_key=True)
+    UserID=models.ForeignKey(Users,on_delete=models.SET_NULL,null=True,blank=True)
+    Discount=models.DecimalField(max_digits=10,decimal_places=2)
+    Tax=models.DecimalField(max_digits=10,decimal_places=2)
+    Beforetax=models.DecimalField(max_digits=10,decimal_places=2)
+    Aftertax=models.DecimalField(max_digits=10,decimal_places=2)
+    Paymentstatus=models.CharField(max_length=20,default='Unpaid')
+    BillingAddress=models.CharField(max_length=255)
+
+    class meta:
+        managed=False
+        db_table='invoice'
+
+class InvoiceDetails(models.Model):
+    DocheaderNo=models.CharField(max_length=20,primary_key=True)
+    UserID=models.ForeignKey(Users,on_delete=models.SET_NULL,null=True,blank=True)
+    InvNo=models.ForeignKey(Invoice,on_delete=models.SET_NULL,null=True,blank=True)
+    ProductID=models.ForeignKey(Products,on_delete=models.SET_NULL,null=True,blank=True)
+    Tax=models.DecimalField(max_digits=10,decimal_places=2)
+    Quantity=models.IntegerField
+    Price=models.DecimalField(max_digits=10,decimal_places=2)
+    GST=models.CharField(max_length=30)
+
+    class meta:
+        managed=False
+        db_table='invoice_Detail'
+
+class Payments(models.Model):
+    DocNo=models.IntegerField(primary_key=True)
+    InvoiceNO=models.ForeignKey(Invoice,on_delete=models.SET_NULL,null=True,blank=True)
+    PaymentMethod=models.CharField(max_length=4)
+    Amount=models.DecimalField(max_digits=10,decimal_places=2)
+    PayementDate=models.DateTimeField(default=datetime.now)
+    PaymentStatus=models.CharField(max_length=6)
+
+    class meta:
+        managed=False
+        db_table='payments'
+
+class Coupouns(models.Model):
+    ID=models.IntegerField(primary_key=True)
+    Code=models.CharField(max_length=20,unique=True)
+    method=models.CharField(max_length=2,default='01')
+    DiscountPercent=models.CharField(max_length=2,default='01')
+    ValidFrom=models.DateTimeField(default=datetime.now)
+    validTill=models.DateField
+    ISActive=models.BooleanField(default=1)
+
+    class meta:
+        managed=False
+        db_table='Coupouns'
+
+class Customer(models.Model):
+    ID=models.CharField(max_length=10,primary_key=True)
+    UserID=models.IntegerField
+    Addressline1=models.CharField(max_length=255)
+    Addressline2=models.CharField(max_length=255,null=True)
+    CustomerState=models.CharField(max_length=50)
+    Postalcode=models.CharField(max_length=20)
+    created=models.DateTimeField(default=datetime.now)
+    GSt=models.CharField(max_length=50)
+
+    class meta:
+        managed=False
+        db_table='Customer'
+
+
