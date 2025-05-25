@@ -18,4 +18,6 @@ urlpatterns=[
    path('wishlist',views.wishlist,name='wishlist'),
    path('cart',views.cart,name='cart'),
    path('productsmain',views.productsmain,name='productsmain'),
+   path('logout',views.logout,name='logout'),
+   path('otp_veri',views.otp_veri,name='otp_veri'),
 ]
