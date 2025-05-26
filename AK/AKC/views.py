@@ -79,21 +79,34 @@ def address_list(request):
 def login(request):
     if request.method=='POST':
         email=request.POST.get('email')
+        action=request.POST.get('action')
         if Users.objects.filter(email=email).exists():
             request.session['user_email'] = email
-            return render(request,'password.html')
+            if action=='Login':
+                return render(request,'password.html')
+            else:
+                rand=random.randint(100000, 999999)
+                request.session['otp']=str(rand)
+                usr_msg=("Greetings From Akshana \n\n"
+                         f"OTP for login {rand}")
+                send_mail(subject='Welcome to My Akshana Clothings!',
+                      message=usr_msg,
+                      from_email='akshanaclothings@gmail.com',
+                      recipient_list=[email],
+                      fail_silently=False,) 
+                return render(request,'otp.html')
         else:
             messages.error(request,"User Not Found")
     return render(request,'User/login.html')
 
 def otp(request):
     if request.method=='POST':
-        one=request.Post.get('fst')
-        two=request.Post.get('scd')
-        three=request.Post.get('thrd')
-        four=request.Post.get('frt')
-        five=request.Post.get('fv')
-        six=request.Post.get('sx')
+        one=request.POST.get('fst')
+        two=request.POST.get('scd')
+        three=request.POST.get('thrd')
+        four=request.POST.get('frt')
+        five=request.POST.get('fv')
+        six=request.POST.get('sx')
         otp=one+two+three+four+five+six
         vrf=request.session['otp']
         if vrf==otp:
@@ -104,18 +117,14 @@ def otp(request):
     return render(request,'otp.html')
 
 def otp_veri(request):
-    rand=random.randint(100000, 999999)
-    request.session['otp']=str(rand)
-    email = request.session.get('user_email')
-    usr_msg=("Greetings From Akshana \n\n"
-             f"OTP for login {rand}")
-    send_mail(subject='Welcome to My Akshana Clothings!',
-        message=usr_msg,
-        from_email='akshanaclothings@gmail.com',
-        recipient_list=[email],
-        fail_silently=False,) 
-  
-    return render(request,'otp.html')
+    
+    if request.method=='POST':
+        email=request.POST.get('email')
+        if Users.objects.filter(email=email).exists():
+            request.session['email']=email
+            
+            return render(request,'otp.html')    
+    return render(request,'User/login.html')
 
 
 def pass_word(request):
