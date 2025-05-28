@@ -132,8 +132,11 @@ def pass_word(request):
     if not email:
         return redirect('login')
     if request.method=='POST':
+        
         password=request.POST.get('password')
+        
         hashed_input=hashlib.sha256(password.encode()).hexdigest()
+        request.session['password']=hashed_input
         try:
             user=Users.objects.get(email=email)
             if user.password==hashed_input:
@@ -160,7 +163,20 @@ def wishlist(request):
     return render(request,'wishlist.html')
 
 def cart(request):
-    return render(request,'cart.html')
+    email=request.session['user_email']
+    
+    if Users.objects.filter(email=email).exists():
+        user=Users.objects.get(email=email)
+        usrid=user.id
+        try:
+            cart_item=Cart.objects.filter(UserID_id=usrid).select_related('ProductID')
+        except Users.DoesNotExist:
+            cart_items=[]
+        context={
+            'cart_items':cart_items
+        }
+
+    return render(request,'cart.html',context)
 
 def productsmain(request):
     return render(request,'products/product_main.html')

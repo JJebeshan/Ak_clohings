@@ -20,7 +20,7 @@
                     <!-- Dropdown Menu -->
                     
                     <ul id="dropdownMenu" class="absolute left-0 top-full mt-2 w-40 bg-white border rounded-lg shadow-md opacity-0 invisible transition-opacity z-50">
-                        {% if request.session.user_email %}
+                        {% if request.session.user_email and request.session.password %}
                         <a href="{% url 'profile' %}"><li class="px-4 py-2 hover:bg-gray-100">Profile</li></a>
                         <a href="{% url 'orders'%}"><li class="px-4 py-2 hover:bg-gray-100">Orders</li></a>
                         <a href="{% url 'coupons'%}"><li class="px-4 py-2 hover:bg-gray-100">Coupons</li></a>
