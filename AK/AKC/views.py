@@ -163,18 +163,22 @@ def wishlist(request):
     return render(request,'wishlist.html')
 
 def cart(request):
+    if not request.session.get('user_email'):
+        return redirect('login')
     email=request.session['user_email']
     
     if Users.objects.filter(email=email).exists():
         user=Users.objects.get(email=email)
         usrid=user.id
         try:
-            cart_item=Cart.objects.filter(UserID_id=usrid).select_related('ProductID')
+            cart_items=Cart.objects.filter(UserID_id=usrid).select_related('ProductID')
         except Users.DoesNotExist:
             cart_items=[]
         context={
             'cart_items':cart_items
         }
+    else:
+        return redirect('home')
 
     return render(request,'cart.html',context)
 

@@ -5,6 +5,7 @@
 <div class="container mx-auto p-6">
     <div class="mt-10">
         <h2 class="text-2xl font-semibold text-center mb-6">Cart</h2>
+        {% if cart_items %}
         <div class="space-y-4">
             {% for item in cart_items %}
             <div class="flex items-center bg-green-50 p-4 rounded-lg shadow-md">
@@ -15,11 +16,17 @@
                 </div>
                 <button class="bg-red-300 text-white px-4 py-2 rounded hover:bg-red-400">Remove</button>
             </div>
+            {% endfor %}
         </div>
         <div class="mt-6 text-center">
             <label for="total" class="text-lg font-semibold">Total Price:</label>
             <input id="total" type="text" value="$55.00" class="w-32 p-2 border border-green-300 rounded-lg text-center" disabled>
             <button class="ml-4 bg-green-500 text-white px-6 py-2 rounded hover:bg-green-600">Checkout</button>
         </div>
+        {% else %}
+        <div class="text-center mt-10 text-gray-600 text-xl">
+            🛒 Your cart is empty.
+        </div>
+        {% endif %}
     </div>
 </div>
