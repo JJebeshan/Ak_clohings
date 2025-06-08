@@ -36,7 +36,7 @@ def signup(request):
         passw = request.POST.get('password')
         phone = request.POST.get('phone')
         role='Customer'
-        action='0001'
+        action='0000'
         msg_code=''
         hashed_password = hashlib.sha256(passw.encode()).hexdigest() #import haslib
         if Users.objects.filter(email=email).exists():
@@ -80,8 +80,12 @@ def login(request):
     if request.method=='POST':
         email=request.POST.get('email')
         action=request.POST.get('action')
+        
         if Users.objects.filter(email=email).exists():
-            request.session['user_email'] = email
+            user=Users.objects.get(email=email)
+            request.session['user_email'] = user.email
+            request.session['username']=user.firstname
+            request.session['role']=user.role
             if action=='Login':
                 return render(request,'password.html')
             else:
@@ -120,8 +124,10 @@ def otp_veri(request):
     
     if request.method=='POST':
         email=request.POST.get('email')
-        if Users.objects.filter(email=email).exists():
-            request.session['email']=email
+        user=Users.objects.filter(email=email).first()
+        if user:
+            request.session['email']=user.email
+            request.session['username']=user.firstname
             
             return render(request,'otp.html')    
     return render(request,'User/login.html')

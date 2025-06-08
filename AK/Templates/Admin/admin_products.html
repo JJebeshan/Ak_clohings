@@ -1,0 +1,58 @@
+{% load static %}
+{% include 'Admin/Admin_navbar.html' %}
+    {% block title %}
+    <title>Add Product</title>
+    {% endblock %}
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+
+<div class="max-w-2xl mx-auto bg-white p-8 rounded shadow-lg">
+    <h2 class="text-2xl font-semibold text-center mb-6 text-gray-800">Add New Product</h2>
+    <form method="POST" action="" enctype="multipart/form-data" class="space-y-6">
+        {% csrf_token %}
+
+        <!-- Product Name -->
+        <div>
+            <label class="block text-sm font-medium text-gray-700">Product Name</label>
+            <input type="text" name="name" required class="w-full mt-1 p-2 border rounded-md focus:ring-2 focus:ring-green-500 focus:outline-none">
+        </div>
+
+        <!-- Description -->
+        <div>
+            <label class="block text-sm font-medium text-gray-700">Description</label>
+            <textarea name="description" required rows="4" class="w-full mt-1 p-2 border rounded-md focus:ring-2 focus:ring-green-500 focus:outline-none"></textarea>
+        </div>
+
+        <!-- Price -->
+        <div>
+            <label class="block text-sm font-medium text-gray-700">Price</label>
+            <input type="number" name="price" step="0.01" required class="w-full mt-1 p-2 border rounded-md focus:ring-2 focus:ring-green-500 focus:outline-none">
+        </div>
+
+        <!-- Stock -->
+        <div>
+            <label class="block text-sm font-medium text-gray-700">Stock</label>
+            <input type="number" name="stock" required class="w-full mt-1 p-2 border rounded-md focus:ring-2 focus:ring-green-500 focus:outline-none">
+        </div>
+
+        <!-- Category ID -->
+        <div>
+            <label class="block text-sm font-medium text-gray-700">Category ID</label>
+            <input type="number" name="category_id" required class="w-full mt-1 p-2 border rounded-md focus:ring-2 focus:ring-green-500 focus:outline-none">
+        </div>
+
+        <!-- Image Upload -->
+       <!-- Image Upload (Multiple) -->
+<div>
+    <label class="block text-sm font-medium text-gray-700">Product Images</label>
+    <input type="file" name="images" multiple accept="image/*" required class="w-full mt-1 p-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-green-500">
+</div>
+
+
+        <!-- Submit Button -->
+        <div>
+            <button type="submit" class="w-full bg-green-600 text-white py-2 rounded hover:bg-green-700 transition duration-200">Add Product</button>
+        </div>
+    </form>
+</div>
+</body>
+</html>
