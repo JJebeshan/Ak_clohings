@@ -22,28 +22,33 @@
     </aside>
     
     <!-- Product Section -->
-    <div class="w-3/4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-        <div class="bg-white p-4 rounded-lg shadow-md">
-            <img src="https://via.placeholder.com/200" alt="Product 1" class="w-full h-48 object-cover rounded">
-            <h3 class="text-lg font-semibold mt-2">Amazon Brand - Symbol</h3>
-            <p class="text-red-500 font-bold">Limited time deal</p>
-            <p class="text-gray-600">$549 <span class="line-through">$1,499</span></p>
+    <div class="w-3/4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 mx-auto">
+    {% for product in products %}
+    <div class="bg-white p-4 rounded-lg shadow-md">
+        <img src="{{ product.image.url }}" alt="{{ product.ProductName }}" class="w-full h-48 object-cover rounded">
+        <h3 class="text-lg font-semibold mt-2">{{ product.ProductName }}</h3>
+
+        {% if product.offer %}
+            <p class="text-red-500 font-bold">{{ product.offer }}</p>
+        {% endif %}
+
+        <p class="text-gray-600">
+            ₹{{ product.Price }}
+            {% if product.Price %}
+                <span class="line-through">₹{{ product.Price }}</span>
+            {% endif %}
+        </p>
+
+        <form method="post" action="{% url 'add_to_cart' product.id %}">
+            {% csrf_token %}
             <button class="mt-2 bg-yellow-500 text-white px-4 py-2 rounded hover:bg-yellow-600">Add to Cart</button>
-        </div>
-        <div class="bg-white p-4 rounded-lg shadow-md">
-            <img src="https://via.placeholder.com/200" alt="Product 2" class="w-full h-48 object-cover rounded">
-            <h3 class="text-lg font-semibold mt-2">DAMENSCH</h3>
-            <p class="text-green-500 font-bold">Save 5% with coupon</p>
-            <p class="text-gray-600">$1,493 <span class="line-through">$1,799</span></p>
-            <button class="mt-2 bg-yellow-500 text-white px-4 py-2 rounded hover:bg-yellow-600">Add to Cart</button>
-        </div>
-        <div class="bg-white p-4 rounded-lg shadow-md">
-            <img src="https://via.placeholder.com/200" alt="Product 3" class="w-full h-48 object-cover rounded">
-            <h3 class="text-lg font-semibold mt-2">U.S. POLO ASSN.</h3>
-            <p class="text-gray-600">$1,374 <span class="line-through">$2,499</span></p>
-            <button class="mt-2 bg-yellow-500 text-white px-4 py-2 rounded hover:bg-yellow-600">Add to Cart</button>
-        </div>
+        </form>
     </div>
+    {% empty %}
+    <p class="col-span-3 text-center text-gray-500">No products available.</p>
+    {% endfor %}
+</div>
+
 </div>
 
 <script>

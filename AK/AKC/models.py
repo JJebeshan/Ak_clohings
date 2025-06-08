@@ -77,13 +77,17 @@ class Products(models.Model):
     ProductName=models.CharField(max_length=50)
     ProductDesc=models.CharField(max_length=255)
     Price=models.DecimalField(max_digits=10,decimal_places=2)
+    size=models.CharField(max_length=20)
     stock=models.IntegerField()
-    Imageurl=models.ImageField(upload_to='Products/')
     CategoryID=models.ForeignKey(Category,on_delete=models.SET_NULL,null=True,blank=True)
     Added=models.DateTimeField(default=timezone.now)
 
     def __str__(self):
         return f"Product {self.ProductID}-Name: {self.ProductName}"
+
+class ProductImage(models.Model):
+    product = models.ForeignKey(Products, on_delete=models.CASCADE, related_name='images')
+    image = models.ImageField(upload_to='product_images/')
 
 class Cart(models.Model):
     CartID=models.CharField(max_length=10,primary_key=True)

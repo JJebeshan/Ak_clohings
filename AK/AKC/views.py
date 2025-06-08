@@ -17,7 +17,8 @@ def home(request):
         static("banner2.png"),
         static("banner3.jpg"),
     ]
-    return render(request, "index.html", {"slides": slides})
+    product=Products.objects.all()
+    return render(request, "index.html", {"slides": slides,'product':product})
 
 def profile(request):
     return render(request,'profile.html')
@@ -189,7 +190,9 @@ def cart(request):
     return render(request,'cart.html',context)
 
 def productsmain(request):
-    return render(request,'products/product_main.html')
+    product=Products.objects.all()
+    
+    return render(request,'products/product_main.html',{'Products':product})
 
 def logout(request):
     request.session.flush()
